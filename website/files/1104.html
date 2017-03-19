@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1104</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1104</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1104</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1104 target="_blank" > Problem 1104 - Birthday Paradox</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Probability-Expected%20Value.html>Probability/Expected Value</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>Sometimes some mathematical results are hard to believe. One 
+of the common problems is the birthday paradox. Suppose you are in a party 
+where there are <b>23</b> people including you. What is the probability that at 
+least two people in the party have same birthday? Surprisingly the result is 
+more than <b>0.5</b>. Now here you have to do the opposite. You have given the 
+number of days in a year. Remember that you can be in a different planet, for 
+example, in Mars, a year is <b>669</b> days long. You have to find the minimum 
+number of people you have to invite in a party such that the probability of at 
+least two people in the party have same birthday is at least <b>0.5</b>.</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector &lt; pii &gt;
+#define si set&lt;int&gt;
+#define ll long long int
+#define pb push_back
+#define mp make_pair
+#define fr first
+#define se second
+#define MAX 10100
+#define MOD 1000003
+
+int main ()
+{
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	#endif
+	ios_base::sync_with_stdio(false);
+	int t;
+	cin&gt;&gt;t;
+	int cas=1;
+	while (t--){
+		cout&lt;&lt;"Case "&lt;&lt;cas++&lt;&lt;": ";
+        double n;
+        cin&gt;&gt;n;
+        double p = 1.0;
+        int ans;
+        for (int i=1;p &gt; 0.5 ;i++){
+            ans=i;
+            p = p*(1.0-((double)i)/n);
+        }
+        cout&lt;&lt;ans&lt;&lt;endl;
+	}
+	return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

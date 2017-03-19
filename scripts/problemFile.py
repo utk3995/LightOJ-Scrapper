@@ -53,8 +53,8 @@ def create(questionCode , questionTitle , tags , problemStatement,lastupdate):
 	problemhtml.write('\t<meta name="description" content="website description" />\n');
 	problemhtml.write('\t<meta name="keywords" content="website keywords, website keywords" />\n');
 	problemhtml.write('\t<meta http-equiv="content-type" content="text/html; charset=windows-1252" />\n');
-	problemhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />\n');
-	problemhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />\n');
+	#problemhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />\n');
+	#problemhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />\n');
 	problemhtml.write('\t<link rel="stylesheet" type="text/css" href="../style/style.css" />\n');
 
 	problemhtml.write('\t<script type="text/javascript" src="../scripts/shCore.js"></script>\n')
@@ -86,7 +86,7 @@ def create(questionCode , questionTitle , tags , problemStatement,lastupdate):
 	problemhtml.write('\t\t\t\t<h3>About Me</h3>\n');
 	problemhtml.write('\t\t\t\t<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>\n');
 	problemhtml.write('\t\t\t\t<p> Student of IIIT Allahabad </p>\n');
-	problemhtml.write('\t\t\t\t<h4>Programmer | Developer | Reader<br/><br/>\n');
+	problemhtml.write('\t\t\t\t<h5>Programmer | Developer | Reader<br/><br/></h5>\n');
 	problemhtml.write('\t\t\t\t</div>\n');
 	problemhtml.write('\t\t\t</div>\n');
 	problemhtml.write('\t\t\t<div id="content">\n');

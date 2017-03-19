@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1017</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1017</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1017</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1017 target="_blank" > Problem 1017 - Brush (III)</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Dynamic%20Programming.html>Dynamic Programming</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal><img width=291 height=86 src="data/problems/desc/1017/a.png" 
+align=left hspace=12>Samir returned home from the contest and got angry after 
+seeing his room dusty. Who likes to see a dusty room after a brain storming 
+programming contest? After checking a bit he found a brush in his room which 
+has width <b>w</b>. Dusts are defined as 2D points. And since they are 
+scattered everywhere, Samir is a bit confused what to do. He asked Samee and found 
+his idea. So, he attached a rope with the brush such that it can be moved 
+horizontally (in <b>X</b> axis) with the help of the rope but in straight line. 
+He places it anywhere and moves it. For example, the <b>y</b> co-ordinate of 
+the bottom part of the brush is 2 and its width is 3, so the <b>y</b> 
+coordinate of the upper side of the brush will be 5. And if the brush is moved, 
+all dusts whose <b>y</b> co-ordinates are between 2 and 5 (inclusive) will be 
+cleaned. After cleaning all the dusts in that part, Samir places the brush in 
+another place and uses the same procedure. He defined a <b>move</b> as placing 
+the brush in a place and cleaning all the dusts in the horizontal zone of the 
+brush.</p> 
+
+<p class=MsoNormal>You can assume that the rope is sufficiently large. Since 
+Samir is too lazy, he doesn't want to clean all the room. Instead of doing it 
+he thought that he would use at most <b>k</b> moves. Now he wants to find the 
+maximum number of dust units he can clean using at most <b>k</b> moves. Please 
+help him.</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector &lt; pii &gt;
+#define si set&lt;int&gt;
+#define ll long long int
+#define pb push_back
+#define mp make_pair
+#define fr first
+#define se second
+#define MOD 1000003
+#define MAX 10100
+
+int dp[110][110];
+ll y[110];
+ll w,n;
+
+int func(int pos,int kr)
+{
+    if (kr == 0){
+        return 0;
+    }
+    else if (pos == n){
+        return 0;
+    }
+    if (dp[pos][kr] != -1)
+        return dp[pos][kr];
+    int up = upper_bound(y,y+n,y[pos]+w)-y;
+    int ret = up-pos;
+    dp[pos][kr] = max(ret + func(up,kr-1) , func(pos+1,kr));
+    //cout&lt;&lt;pos&lt;&lt;"  "&lt;&lt;kr&lt;&lt;"  "&lt;&lt;dp[pos][kr]&lt;&lt;endl;
+    return dp[pos][kr];
+}
+
+int main ()
+{
+    //cout &lt;&lt; setprecision(7) &lt;&lt; fixed;
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	#endif
+	ios_base::sync_with_stdio(false);
+	int t;
+	cin&gt;&gt;t;
+	int cas=1;
+	while (t--){
+        memset(dp,-1,sizeof(dp));
+		cout&lt;&lt;"Case "&lt;&lt;cas++&lt;&lt;": ";
+        int k;
+        cin&gt;&gt;n&gt;&gt;w&gt;&gt;k;
+        int foo;
+        for (int i=0;i&lt;n;i++){
+            cin&gt;&gt;foo&gt;&gt;y[i];
+        }
+        sort(y,y+n);
+        cout&lt;&lt;func(0,k)&lt;&lt;endl;
+	}
+	return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

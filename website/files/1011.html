@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1011</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1011</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1011</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1011 target="_blank" > Problem 1011 - Marriage Ceremonies</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Dynamic%20Programming.html>Dynamic Programming</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>You work in a company which organizes marriages. Marriages 
+are not that easy to be made, so, the job is quite hard for you.</p> 
+
+<p class=MsoNormal>The job gets more difficult when people come here and give 
+their bio-data with their preference about opposite gender. Some give 
+priorities to family background, some give priorities to education, etc.</p> 
+
+<p class=MsoNormal>Now your company is in a danger and you want to save your 
+company from this financial crisis by arranging as much marriages as possible. 
+So, you collect <b>N</b> bio-data of men and <b>N</b> bio-data of women. After 
+analyzing quite a lot you calculated the priority index of each pair of men and 
+women.</p> 
+
+<p class=MsoNormal>Finally you want to arrange <b>N</b> marriage ceremonies, 
+such that the total priority index is maximized. Remember that each man should 
+be paired with a woman and only monogamous families should be formed.</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int a[20][20];
+int n;
+int dp[100000][20];
+
+int func(long long int mask,int pos)
+{
+    if (pos==n)
+        return 0;
+    if (dp[mask][pos]!=-1)
+        return dp[mask][pos];
+    int ret=0;
+    for (int i=0;i&lt;n;i++){
+        if (mask & (1&lt;&lt;i))
+            continue;
+        ret = max(ret,func((mask | 1&lt;&lt;i),pos+1)+a[pos][i]);
+    }
+    dp[mask][pos]=ret;
+    return ret;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    //freopen("in.txt","r",stdin);
+    int t;
+    cin&gt;&gt;t;
+    int cas=1;
+    while (t--){
+        memset(a,0,sizeof(a));
+        memset(dp,-1,sizeof(dp));
+        cin&gt;&gt;n;
+        for (int i=0;i&lt;n;i++){
+            for (int j=0;j&lt;n;j++){
+                cin&gt;&gt;a[i][j];
+            }
+        }
+        cout&lt;&lt;"Case "&lt;&lt;cas++&lt;&lt;": "&lt;&lt;func(0,0)&lt;&lt;endl;
+    }
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1020</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1020</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1020</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1020 target="_blank" > Problem 1020 - A Childhood Game</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Basic%20Math.html>Basic Math</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>Alice and Bob are playing a game with marbles; you may have 
+played this game in childhood. The game is playing by alternating turns. In 
+each turn a player can take exactly one or two marbles.</p> 
+
+<p class=MsoNormal>Both Alice and Bob know the number of marbles initially. Now 
+the game can be started by any one. But the winning condition depends on the 
+player who starts it. If Alice starts first, then the player who takes the last 
+marble looses the game. If Bob starts first, then the player who takes the last 
+marble wins the game.</p> 
+
+<p class=MsoNormal>Now you are given the initial number of marbles and the name 
+of the player who starts first. Then you have to find the winner of the game if 
+both of them play optimally.</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector &lt; pii &gt;
+#define si set&lt;int&gt;
+#define ll long long int
+#define pb push_back
+#define mp make_pair
+#define fr first
+#define se second
+#define MOD 1000003
+#define MAX 10100
+
+int main ()
+{
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	#endif
+	//ios_base::sync_with_stdio(false);
+	int t;
+	scanf("%d",&t);
+	int cas=1;
+	while (t--){
+		cout&lt;&lt;"Case "&lt;&lt;cas++&lt;&lt;": ";
+        ll n;
+        scanf("%lld",&n);
+        char s[10];
+        scanf("%s",s);
+        if (strcmp(s,"Alice")==0){
+            if (n%3==1)
+                cout&lt;&lt;"Bob"&lt;&lt;endl;
+            else
+                cout&lt;&lt;"Alice"&lt;&lt;endl;
+        }
+        else{
+            if (n%3==0)
+                cout&lt;&lt;"Alice"&lt;&lt;endl;
+            else
+                cout&lt;&lt;"Bob"&lt;&lt;endl;
+        }
+	}
+	return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

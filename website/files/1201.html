@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1201</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1201</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1201</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1201 target="_blank" > Problem 1201 - A Perfect Murder</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Bipartite%20Matching.html>Bipartite Matching</a>, <a href= ../tags/Dynamic%20Programming.html>Dynamic Programming</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>&quot;Yes, I am the murderer. No doubt&quot; I had to 
+confess it in front of all. But wait, why I am confessing? Nobody wants to go 
+to jail, neither do I. As you have suspected there is something fishy. So, let 
+me explain a bit.</p> 
+
+<p class=MsoNormal>The murder was happened in 19th June, at 11:30 pm this year 
+(2009) according to the medical report. So, I was asking the judge &quot;Can 
+you find the time 19th June 11:30 pm in Bangladesh?&quot; The judge informed 
+other reporters to find the time. But alas! There was no time - &quot;2009, 
+19th June, 11:30 pm&quot;. So, the judge got a bit confused about my 
+confession. So, I began to tell them, &quot;The time the murder was happened, 
+is not a valid time according to you. So, how can you claim that I am the 
+murderer?&quot;</p> 
+
+<p class=MsoNormal>And what happened next, you all know. I am in the streets 
+again with a clean sheet.</p> 
+
+<p class=MsoNormal>But now I have planned to kill again. I have a list of <b>N</b> 
+mosquitoes which are to be killed. But there is a small problem. If I kill a mosquito, 
+all of his friends will be informed, so they will be prepared for my attack, 
+thus they will be impossible to kill. But there is a surprising fact. That is 
+if I denote them as a node and their friendship relations as edges, the graph 
+becomes acyclic.</p> 
+
+<p class=MsoNormal>Now I am planning when and how to kill them (how to get rid 
+of the law!) and you have to write a program that will help me to find the 
+maximum number of mosquito I can kill. Don't worry too much, if anything goes 
+wrong I will not mention your name, trust me!</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int n,m;
+vector &lt;int&gt; g[1050];
+int dp[1050][2];
+int vis[1050];
+
+int func(int i,int f)
+{
+    vis[i]=1;
+    if (dp[i][f]!=-1)
+        return dp[i][f];
+    dp[i][0]=0;
+    dp[i][1]=1;
+    for (int j=0;j&lt;g[i].size();j++){
+        int v=g[i][j];
+        if (vis[v]==0){
+            dp[i][0] += max(func(v,0),func(v,1));
+            dp[i][1] += func(v,0);
+        }
+    }
+    return dp[i][f];
+}
+
+int main ()
+{
+   // freopen("in.txt","r",stdin);
+    ios_base::sync_with_stdio(false);
+    int t;
+    cin&gt;&gt;t;
+    int cas=1;
+    while (t--){
+        memset(dp,-1,sizeof(dp));
+        memset(vis,0,sizeof(vis));
+        cin&gt;&gt;n&gt;&gt;m;
+        for (int i=0;i&lt;1050;i++)
+            g[i].clear();
+        for (int i=0;i&lt;m;i++){
+            int x,y;
+            cin&gt;&gt;x&gt;&gt;y;
+            x--,y--;
+            g[x].push_back(y);
+            g[y].push_back(x);
+        }
+        int ans=0;
+        for (int i=0;i&lt;n;i++){
+            if (vis[i]==0){
+                ans+=max(func(i,0),func(i,1));
+            }
+        }
+        cout&lt;&lt;"Case "&lt;&lt;cas++&lt;&lt;": "&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

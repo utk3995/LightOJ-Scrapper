@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1031</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1031</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1031</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1031 target="_blank" > Problem 1031 - Easy Game</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Dynamic%20Programming.html>Dynamic Programming</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>You are playing a two player game. Initially there are <b>n</b> 
+integer numbers in an array and player <b>A</b> and <b>B</b> get chance to take 
+them alternatively. Each player can take one or more numbers from the left or 
+right end of the array but cannot take from both ends at a time. He can take as 
+many consecutive numbers as he wants during his time. The game ends when all 
+numbers are taken from the array by the players. The point of each player is 
+calculated by the summation of the numbers, which he has taken. Each player 
+tries to achieve more points from other. If both players play optimally and 
+player <b>A</b> starts the game then how much more point can player <b>A</b> 
+get than player <b>B</b>?</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector &lt; pii &gt;
+#define si set&lt;int&gt;
+#define ll long long int
+#define pb push_back
+#define mp make_pair
+#define fr first
+#define se second
+#define MOD 1000003
+#define MAX 10100
+
+int a[110];
+ll dp[110][110];
+int n;
+
+ll func(int l,int u)
+{
+    if (l&gt;u){
+        return 0;
+    }
+    if (dp[l][u] != -1)
+        return dp[l][u];
+    ll ret = INT_MIN;
+    ll sum=0;
+    for (int i=l;i&lt;=u;i++){
+        sum += a[i];
+            ret = max(ret , sum - func(i+1,u));
+    }
+    sum=0;
+    for (int i=u;i&gt;=l;i--){
+        sum += a[i];
+            ret = max(ret , sum - func(l,i-1));
+    }
+    dp[l][u] = ret;
+    return ret;
+}
+
+int main ()
+{
+    //cout &lt;&lt; setprecision(7) &lt;&lt; fixed;
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	#endif
+	ios_base::sync_with_stdio(false);
+	int t;
+	cin&gt;&gt;t;
+	int cas=1;
+	while (t--){
+		cout&lt;&lt;"Case "&lt;&lt;cas++&lt;&lt;": ";
+        cin&gt;&gt;n;
+        for (int i=0;i&lt;n;i++){
+            cin&gt;&gt;a[i];
+            for (int j=0;j&lt;n;j++){
+                dp[i][j] = dp[i][j] =-1;
+            }
+        }
+        cout&lt;&lt;func(0,n-1)&lt;&lt;endl;
+	}
+	return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

@@ -13,8 +13,8 @@ def initalize():
 	indexhtml.write('\t<meta name="description" content="website description" />\n');
 	indexhtml.write('\t<meta name="keywords" content="website keywords, website keywords" />\n');
 	indexhtml.write('\t<meta http-equiv="content-type" content="text/html; charset=windows-1252" />\n');
-	indexhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />\n');
-	indexhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />\n');
+	#indexhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />\n');
+	#indexhtml.write('\t<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />\n');
 	indexhtml.write('\t<link rel="stylesheet" type="text/css" href="style/style.css" />\n');
 	indexhtml.write('</head>\n');
 	indexhtml.write('\n');
@@ -39,7 +39,7 @@ def initalize():
 	indexhtml.write('\t\t\t\t<h3>About Me</h3>\n');
 	indexhtml.write('\t\t\t\t<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>\n');
 	indexhtml.write('\t\t\t\t<p> Student of IIIT Allahabad </p>\n');
-	indexhtml.write('\t\t\t\t<h4>Programmer | Developer | Reader<br/><br/>\n');
+	indexhtml.write('\t\t\t\t<h5>Programmer | Developer | Reader<br/><br/></h5>\n');
 	indexhtml.write('\t\t\t\t</div>\n');
 	indexhtml.write('\t\t\t</div>\n');
 	indexhtml.write('\t\t\t<div id="content">\n');

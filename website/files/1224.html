@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1224</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1224</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1224</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1224 target="_blank" > Problem 1224 - DNA Prefix</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Trie%20Tree.html>Trie Tree</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>Given a set of <b>n</b> DNA samples, where each sample is a 
+string containing characters from <b>{A, C, G, T}</b>, we are trying to find a 
+subset of samples in the set, where the length of the longest common prefix 
+multiplied by the number of samples in that subset is maximum.</p> 
+
+<p class=MsoNormal>To be specific, let the samples be:</p> 
+
+<p class=MsoNoSpacing style='text-align:justify'>ACGT</p> 
+
+<p class=MsoNoSpacing style='text-align:justify'>ACGTGCGT</p> 
+
+<p class=MsoNoSpacing style='text-align:justify'>ACCGTGC</p> 
+
+<p class=MsoNormal>ACGCCGT</p> 
+
+<p class=MsoNormal>If we take the subset {ACGT} then the result is 4 (4 * 1), 
+if we take {ACGT, ACGTGCGT, ACGCCGT} then the result is 3 * 3 = 9 (since ACG is 
+the common prefix), if we take {ACGT, ACGTGCGT, ACCGTGC, ACGCCGT} then the 
+result is 2 * 4 = 8.</p> 
+
+<p class=MsoNormal>Now your task is to report the maximum result we can get 
+from the samples.</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+typedef struct node
+{
+    int data; //this is only to check if the node is a leaf node or not
+    node *child[4];
+}node;
+
+typedef struct trie
+{
+    node *root;
+}trie;
+
+int mv=0;
+
+struct node *newnode()
+{
+    struct node *nn = (struct node *)malloc(sizeof(struct node));
+    nn-&gt;data = 0;
+    int i;
+    for (i=0;i&lt;4;i++){
+        nn-&gt;child[i]=NULL;
+    }
+    return nn;
+}
+
+int getidx(char ch)
+{
+    if (ch==&apos;A&apos;)
+        return 0;
+    else if (ch==&apos;C&apos;)
+        return 1;
+    else if (ch==&apos;G&apos;)
+        return 2;
+    else
+        return 3;
+}
+
+void nodeinsert(trie *t, char *str)
+{
+    int i,len=strlen(str);
+    node *temp = t-&gt;root;
+    for (i=0;i&lt;len;i++){
+        int idx = getidx(str[i]);
+        temp-&gt;data = temp-&gt;data + 1 ;
+        if ((temp-&gt;child[idx])!=NULL){
+            temp = temp-&gt;child[idx];
+        }
+        else{
+            temp-&gt;child[idx]=newnode();
+            temp = temp-&gt;child[idx];
+        }
+    }
+    temp-&gt;data = temp-&gt;data + 1;
+}
+
+
+void func1(node *n,int level)
+{
+    int i;
+    if (mv &lt; level*(n-&gt;data)){
+        mv = level*(n-&gt;data);
+    }
+    for (i=0;i&lt;4;i++){
+        if ((n-&gt;child[i])!=NULL)
+            func1(n-&gt;child[i],level+1);
+    }
+}
+
+
+int main ()
+{
+    //freopen("input.txt","r",stdin);
+    int test;
+    cin&gt;&gt;test;
+    int tn=1;
+    while (test--){
+        mv=0;
+        trie *t = (trie *)malloc(sizeof(trie));
+        t-&gt;root = newnode();
+        int n;
+        cin&gt;&gt;n;
+        while (n--){
+            char str[51];
+            scanf("%s",str);
+            nodeinsert(t,str);
+        }
+        func1(t-&gt;root,0);
+        cout&lt;&lt;"Case "&lt;&lt;tn++&lt;&lt;": "&lt;&lt;mv&lt;&lt;endl;
+    }
+    return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

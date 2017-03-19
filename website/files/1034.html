@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1034</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1034</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1034</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1034 target="_blank" > Problem 1034 - Hit the Light Switches</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Cycles-Topological%20Sorting-Strongly%20Connected%20Component.html>Cycles/Topological Sorting/Strongly Connected Component</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>Ronju is a night-guard at the &quot;Lavish office buildings 
+Ltd.&quot; headquarters. The office has a large grass field in front of the 
+building. So every day, when Ronju comes to duty at the evening, it is his duty 
+to turn on all the lights in the field. However, given the large size of the 
+field and the large number of lights, it is very tiring for him to walk to each 
+and every individual light to turn it on.</p> 
+
+<p class=MsoNormal>So he has devised an ingenious plan - he will swap the 
+switches for light-sensitive triggers. A local electronic store nearby sells 
+these funny trigger switches at a very cheap price. Once installed at a 
+light-post, it will automatically turn that light on whenever it can sense some 
+other light lighting up nearby. So from now on, Ronju can just manually flip a 
+few switches, and the light from those will trigger nearby sensors, which will 
+in turn light up some more lights nearby, and so on, gradually lighting up the 
+whole field.</p> 
+
+<p class=MsoNormal>Now Ronju wonders: how many switches does he have to flip 
+manually for this?</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+vector &lt; vector&lt;int&gt; &gt; G(10010);
+int visited[10010];
+stack &lt;int&gt; s;
+
+int dfs(int v,int flag)
+{
+    int i,u;
+    visited[v]=1;
+    for (i=0;i&lt;G[v].size();i++){
+        u=G[v][i];
+        if (visited[u]==0)
+            dfs(u,1);
+    }
+    if (flag==1)
+        s.push(v);
+
+}
+
+int main ()
+{
+    //freopen("input.txt","r",stdin);
+    int t;
+    cin&gt;&gt;t;
+    int cas=1;
+    while (t--){
+    int n,e,i;
+    cin&gt;&gt;n&gt;&gt;e;
+    for (i=0;i&lt;=10010;i++)
+        G[i].clear(),visited[i]=0;
+    while (!s.empty())
+        s.pop();
+    while (e--){
+        int u,v;
+        cin&gt;&gt;u&gt;&gt;v;
+        G[u].push_back(v);
+    }
+    for (i=1;i&lt;=n;i++){
+        if (visited[i]==0)
+            dfs(i,1);
+    }
+
+    memset(visited,0,sizeof(visited));
+    int co=0;
+
+    while (!s.empty()){
+        i=s.top();
+        s.pop();
+        if (visited[i]==0)
+            dfs(i,0),co++;
+    }
+    printf("Case %d: %d\n",cas++,co);
+    //cout&lt;&lt;co&lt;&lt;endl;
+    }
+    return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

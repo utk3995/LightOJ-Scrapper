@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1166</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1166</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1166</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1166 target="_blank" > Problem 1166 - Old Sorting</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Greedy.html>Greedy</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>Given an array containing a permutation of <b>1</b> to <b>n</b>, 
+you have to find the minimum number of swaps to sort the array in ascending 
+order. A swap means, you can exchange any two elements of the array.</p> 
+
+<p class=MsoNormal>For example, let <b>n = 4</b>, and the array be <b>4 2 3 1</b>, 
+then you can sort it in ascending order in just <b>1</b> swaps (by swapping <b>4</b> 
+and <b>1</b>).</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define ll long long int
+#define pii pair&lt;int,int&gt;
+#define pll pair&lt;ll,ll&gt;
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mp make_pair
+#define fr first
+#define se second
+#define MOD 1000000007
+
+map &lt; pair &lt;int,int&gt; , int &gt; dp;
+
+int main ()
+{
+	//freopen("input.txt","r",stdin);
+	ios_base::sync_with_stdio(false);
+    int t;
+    cin&gt;&gt;t;
+    int cas=1;
+    while(t--){
+        int n;
+        cin&gt;&gt;n;
+        int a[n];
+        int b[n];
+        for (int i=0;i&lt;n;i++){
+            cin&gt;&gt;a[i];
+            b[i]=a[i];
+        }
+        sort(b,b+n);
+        int co=0;
+        for (int i=0;i&lt;n;i++){
+            if (a[i] != i+1){
+                for (int j=i+1;j&lt;n;j++){
+                    if (a[j]==i+1){
+                        co++;
+                        swap(a[i],a[j]);
+                    }
+                }
+            }
+        }
+        cout&lt;&lt;"Case "&lt;&lt;cas++&lt;&lt;": "&lt;&lt;co&lt;&lt;endl;
+    }
+	return 0;
+}
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>

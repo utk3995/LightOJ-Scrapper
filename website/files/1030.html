@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Problem 1030</title>
+	<meta name="description" content="website description" />
+	<meta name="keywords" content="website keywords, website keywords" />
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<link rel="stylesheet" type="text/css" href="../style/style.css" />
+	<script type="text/javascript" src="../scripts/shCore.js"></script>
+	<script type="text/javascript" src="../scripts/shBrushCpp.js"></script>
+	<link type="text/css" rel="stylesheet" href="../styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<h1>LightOJ Solutions</h1>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="current"><a>1030</a></li>
+					<li><a href="../">List of Problems</a></li>
+					<li><a href="../tags">Search by Tags</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="sidebar_container">
+				<img class="paperclip" src="../style/paperclip.png" alt="paperclip" />
+				<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3>About Me</h3>
+				<h3><a href="https://www.facebook.com/utk3995">Utkarsh Srivastava</a></h3><br/>
+				<p> Student of IIIT Allahabad </p>
+				<h5>Programmer | Developer | Reader<br/><br/></h5>
+				</div>
+			</div>
+			<div id="content">
+<h1><u>Question Code</u> : 1030</h1>
+<h1><u>Problem Name</u> : <a href=http://lightoj.com/volume_showproblem.php?problem=1030 target="_blank" > Problem 1030 - Discovering Gold</a></h1><br/>
+<h3><u>Problem Tags</u> : 
+<a href= ../tags/Dynamic%20Programming.html>Dynamic Programming</a>, <a href= ../tags/Probability-Expected%20Value.html>Probability/Expected Value</a><br/><br/>
+<h3><u>Problem Statement</u> : </h3>
+
+<p class=MsoNormal>You are in a cave, a long cave! The cave can be represented 
+by a <b>1 x N</b> grid. Each cell of the cave can contain any amount of gold.</p> 
+
+<p class=MsoNormal>Initially you are in position <b>1</b>. Now each turn you 
+throw a perfect <b>6</b> sided dice. If you get <b>X</b> in the dice after 
+throwing, you add <b>X</b> to your position and collect all the gold from the 
+new position. If your new position is outside the cave, then you keep throwing 
+again until you get a suitable result. When you reach the <b>N<sup>th</sup></b> 
+position you stop your journey. Now you are given the information about the 
+cave, you have to find out the <b>expected</b> number of gold you can collect 
+using the given procedure.</p> 
+
+<br/><h3><u>Code</u> : </h3>
+<pre class="brush: cpp;">
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+using namespace std;
+
+int main()
+{
+
+	double pro[110];
+	int val[110];
+	int t;
+	int n;
+	int j;
+	int count;
+	double exp;
+
+	scanf("%d", &t);
+
+	for (int cs = 1; cs &lt;= t; cs++) {
+		scanf("%d", &n);
+		memset(pro, 0, sizeof pro);
+		pro[1] = 1;
+
+
+		for (int i = 1; i &lt;= n; i++) {
+			scanf("%d", val + i);
+		}
+
+		exp = val[1];
+
+		for (int i = 2; i &lt;= n; i++) {
+			
+			for (int k = 1; k &lt;= 6 and i - k &gt;= 1; k++) {
+				j = i - k;
+				count = min(6, n - j);
+				pro[i] = pro[i] + (pro[j] * ( double(1) / double(count)));
+			}
+
+			exp = exp + pro[i] * val[i];
+
+		}
+
+		printf("Case %d: %lf\n", cs, exp);
+
+	}
+
+}
+			</div>
+		</div>
+		<div id="footer">
+			<p> Last Updated on : <a>Sun, 19 Mar 2017</a></p>
+		</div>
+	</div>
+</body>
+</html>
