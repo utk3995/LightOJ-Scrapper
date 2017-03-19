@@ -9,8 +9,8 @@ def get_tags(forumCode):
 	br.set_handle_robots(False)
 	br.open("http://lightoj.com/login_main.php")	   #Url that contains signin form
 	br.select_form(nr=0)
-	br['myuserid'] = "icm2014003@iiita.ac.in"	#see what is the name of txt input in form
-	br['mypassword'] = '3codingpassword4#'
+	br['myuserid'] = ""	#your id here
+	br['mypassword'] = '' #your password here
 	result = br.submit().read()
 	'''if (result == "<script>location.href='login_success.php'</script>"):
 	    print "Success"

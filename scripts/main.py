@@ -84,8 +84,8 @@ br = mechanize.Browser()
 br.set_handle_robots(False)
 br.open("http://www.lightoj.com/login_main.php")	   #Url that contains signin form
 br.select_form(nr=0)
-br['myuserid'] = "icm2014003@iiita.ac.in"  #your user id here
-br['mypassword'] = "3codingpassword4#" #your password here
+br['myuserid'] = ""  #your user id here
+br['mypassword'] = "" #your password here
 result = br.submit().read()
 if (result == "<script>location.href='login_success.php'</script>"):
     print "Login Success"
